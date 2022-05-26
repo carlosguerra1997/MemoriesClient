@@ -45,11 +45,11 @@
     "@redux-devtools/core": "3.9.0",
     "@redux-devtools/dock-monitor": "1.4.0",
     "@redux-devtools/log-monitor": "2.3.0",
-    "eslint": "8.16.0",
-    "eslint-config-standard": "17.0.0",
-    "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-n": "15.2.0",
-    "eslint-plugin-promise": "6.0.0",
-    "eslint-plugin-react": "7.30.0"
+    "eslint": "^8.16.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.2.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.30.0"
   }
 }
