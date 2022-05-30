@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
+
 import React from 'react'
 import { Typography } from '@material-ui/core'
-
-/* eslint-disable react/prop-types */
 
 export const Text = ({
   align = 'center',
