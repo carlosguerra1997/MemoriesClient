@@ -1,23 +1,20 @@
 /* eslint-disable react/prop-types */
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useField } from 'formik'
 
 import { TextField } from '@material-ui/core'
 
-export const TextFields = ({ children, label, name, required, variant = 'standard', ...rest }) => {
-  const { formState: { errors }, register } = useForm()
+export const TextFields = ({ name, placeholder, ...rest }) => {
+  const [field, meta, helpers] = useField(name)
 
   return (
     <TextField
-      label={label}
+      error={meta.error}
       fullWidth
-      name={name}
-      required={required}
-      {...register(name, { required })}
-      variant={variant}
+      onChange={ ({ target }) => helpers.setValue(target.value) }
+      placeholder={placeholder}
+      value={field.value}
       {...rest}
-    >
-      {children}
-    </TextField>
+    />
   )
 }
