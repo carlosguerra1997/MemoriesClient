@@ -4,9 +4,9 @@ import React from 'react'
 
 export const Image = ({
   alt = 'Photo',
-  height = '100',
+  height,
   src = '',
-  width = '100',
+  width,
   ...rest
 }) => {
   return <img alt={alt} height={height} src={src} width={width} {...rest} />
