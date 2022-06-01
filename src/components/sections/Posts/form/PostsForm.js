@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
 import { Formik } from 'formik'
@@ -8,20 +9,23 @@ import FileBase from 'react-file-base64'
 import { Paper } from '@material-ui/core'
 import { Text } from '../../../common/Text'
 import { TextFields } from '../../../common/TextField'
+import { addPost } from '../../../../actions/posts'
 
 export const PostsForm = () => {
+  const dispatch = useDispatch()
   const [photo, setPhoto] = useState('')
 
   const initialValues = {
     creator: '',
     title: '',
     message: '',
-    tags: [],
-    image: photo
+    tags: '',
+    image: ''
   }
 
   const handleSubmit = values => {
-    console.log('Values... ', values)
+    values.image = photo
+    dispatch(addPost(values))
   }
 
   return (
@@ -35,12 +39,12 @@ export const PostsForm = () => {
               <StyledTextField name='message' placeholder='Mensaje' />
               <StyledTextField name='tags' placeholder='Tags ej. #Comida' />
               <FileBase
-                name='photo'
+                name='image'
                 multiple={false}
                 onDone={({ base64 }) => setPhoto(base64)}
                 type='file'
               />
-              <StyledButton color='primary' onClick={handleSubmit}>Submit</StyledButton>
+              <StyledButton color='primary' onClick={handleSubmit}>Publicar</StyledButton>
             </StyledForm>
           </Paper>
       )}
