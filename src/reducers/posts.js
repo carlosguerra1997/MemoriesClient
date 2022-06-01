@@ -1,4 +1,4 @@
-import { GET_ALL_POSTS } from '../types'
+import { ADD_NEW_POST, GET_ALL_POSTS } from '../types'
 
 const initialState = {
   posts: []
@@ -6,6 +6,11 @@ const initialState = {
 
 export const postsReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_NEW_POST:
+      return {
+        ...state,
+        posts: [...state.posts, action.payload]
+      }
     case GET_ALL_POSTS:
       return {
         ...state,
