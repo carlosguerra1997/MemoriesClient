@@ -20,16 +20,17 @@ export const PostsForm = () => {
     title: '',
     message: '',
     tags: '',
-    image: ''
+    file: ''
   }
 
-  const handleSubmit = values => {
-    values.image = photo
+  const handleSubmit = (values, resetForm) => {
+    values.file = photo
     dispatch(addPost(values))
+    resetForm()
   }
 
   return (
-    <Formik initialValues={initialValues} onSubmit={values => handleSubmit(values)}>
+    <Formik initialValues={initialValues} onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}>
       {({ handleSubmit }) => (
           <Paper>
             <Text variant='h6'>Añadir recuerdo</Text>
