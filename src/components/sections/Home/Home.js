@@ -12,7 +12,7 @@ export const Home = () => {
   return (
     <Container maxWidth='lg'>
       <StyledAppBar color='inherit' position='static'>
-        <Text variant='h2'>Memories</Text>
+        <Text variant='h2'>Recuerdos</Text>
         <Image alt='memories' height='60' src={memories} width='60' />
       </StyledAppBar>
       <PostsLayout />
