@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../types'
+import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
 
 import { addNewPost, deletePost, getPosts, likePost, updatePost } from '../api/Posts'
 
