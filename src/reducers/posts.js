@@ -1,7 +1,8 @@
-import { ADD_NEW_POST, GET_ALL_POSTS } from '../types'
+import { ADD_NEW_POST, GET_ALL_POSTS, SET_ACTIVE_POST, UPDATE_POST } from '../types'
 
 const initialState = {
-  posts: []
+  posts: [],
+  activePost: {}
 }
 
 export const postsReducer = (state = initialState, action) => {
@@ -15,6 +16,16 @@ export const postsReducer = (state = initialState, action) => {
       return {
         ...state,
         posts: action.payload
+      }
+    case UPDATE_POST:
+      return {
+        ...state,
+        posts: state.posts.filter(post => post._id === action.payload._id ? action.payload : post)
+      }
+    case SET_ACTIVE_POST:
+      return {
+        ...state,
+        activePost: action.payload
       }
     default:
       return state
