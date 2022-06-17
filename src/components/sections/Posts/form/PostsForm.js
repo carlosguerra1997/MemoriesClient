@@ -38,7 +38,7 @@ export const PostsForm = () => {
               <StyledTextField name='creator' placeholder='Usuario' />
               <StyledTextField name='title' placeholder='Título' />
               <StyledTextField name='message' placeholder='Mensaje' />
-              <StyledTextField name='tags' placeholder='Tags ej. #Comida' />
+              <StyledTextField name='tags' placeholder='Tags ej. #realfood' />
               <FileBase
                 name='image'
                 multiple={false}

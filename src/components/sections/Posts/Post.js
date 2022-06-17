@@ -11,7 +11,7 @@ import { Text } from '../../common/Text'
 
 import { PostDetails } from './PostDetails'
 
-export const Post = ({ createdAt, creator, file, message, tags, title }) => {
+export const Post = ({ createdAt, creator, file, _id, likes, message, tags, title }) => {
   return (
     <StyledCard>
       <StyledMedia image={file} title={title} />
@@ -24,7 +24,7 @@ export const Post = ({ createdAt, creator, file, message, tags, title }) => {
           <MoreHorizIcon fontSize='medium' />
         </StyledButton>
       </StyledMoreInfo>
-      <PostDetails message={message} tags={tags} />
+      <PostDetails id={_id} likes={likes} message={message} tags={tags} title={title} />
     </StyledCard>
   )
 }
