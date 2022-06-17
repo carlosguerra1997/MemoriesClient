@@ -15,6 +15,11 @@ export const updatePost = async (postId, post) => {
   return updatedPost
 }
 
+export const likePost = async (postId) => {
+  const postLiked = await clienteAxios.put(`/posts/${postId}/like`)
+  return postLiked
+}
+
 export const deletePost = async (postId) => {
   const deletedPost = await clienteAxios.delete(`/posts/${postId}`)
   return deletedPost
