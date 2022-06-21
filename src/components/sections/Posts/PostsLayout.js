@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 
 import { Container, Grid, Grow } from '@material-ui/core'
 
@@ -9,15 +10,21 @@ export const PostsLayout = () => {
   return (
     <Grow in>
         <Container>
-          <Grid alignItems='stretch' container justifyContent='space-between' spacing={3}>
+          <StyledGrid alignItems='stretch' container justifyContent='space-between' spacing={3}>
             <Grid item xs={12} sm={7}>
               <Posts />
             </Grid>
             <Grid item xs={12} sm={4}>
               <PostsForm />
             </Grid>
-          </Grid>
+          </StyledGrid>
         </Container>
       </Grow>
   )
 }
+
+const StyledGrid = styled(Grid)`
+  @media screen and (max-width: 500px) {
+    flex-direction: column-reverse;
+  }
+`

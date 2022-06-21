@@ -5,7 +5,7 @@ import { CardContent } from '@material-ui/core'
 import { PostActions } from './PostActions'
 import { Text } from '../../common/Text'
 
-export const PostDetails = ({ message, tags }) => {
+export const PostDetails = ({ id, likes, message, tags, title }) => {
   return (
     <>
       <StyledContainer>
@@ -13,10 +13,11 @@ export const PostDetails = ({ message, tags }) => {
           {tags.map(tag => tag)}
         </Text>
       </StyledContainer>
-      <CardContent>
-        <Text variant='h5' gutterBottom>{message}</Text>
-      </CardContent>
-      <PostActions />
+      <StyledCardContent>
+        <Text align='left' variant='h5' gutterBottom>{title}</Text>
+        <Text align='left' color='textSecondary' variant='body1'>{message}</Text>
+      </StyledCardContent>
+      <PostActions id={id} likes={likes} />
     </>
   )
 }
@@ -24,5 +25,10 @@ export const PostDetails = ({ message, tags }) => {
 const StyledContainer = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 20px;
+  margin: 15px;
+`
+
+const StyledCardContent = styled(CardContent)`
+  margin: 15px;
+  padding: 0;
 `
