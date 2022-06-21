@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { Link } from 'react-router-dom'
+
 import { Formik } from 'formik'
 
 import { Auth } from './Auth'
@@ -15,7 +17,7 @@ export const SignIn = () => {
   }
 
   const handleSubmit = values => {
-
+    console.log('Values... ', values)
   }
 
   return (
@@ -27,6 +29,7 @@ export const SignIn = () => {
             <StyledTextFields name='email' placeholder='Correo electrónico' type='email' />
             <StyledTextFields name='password' placeholder='Contraseña' type='password' />
             <StyledButton color='primary' onClick={handleSubmit}>Iniciar sesión</StyledButton>
+            <StyledLink to='/sign-up'>Todavía no tienes una cuenta? Regístrate</StyledLink>
           </>
         )}
       </Formik>
@@ -42,6 +45,14 @@ const StyledTextFields = styled(TextFields)`
 
 const StyledButton = styled(Buttons)`
   &&& {
-    margin-top: 1.5rem;
+    margin: 1.5rem 0 0 0;
+    width: 100%;
   }
+`
+
+const StyledLink = styled(Link)`
+  color: black;
+  font-size: 12px;
+  margin-top: 1rem;
+  text-decoration: none;
 `

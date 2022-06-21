@@ -1,10 +1,12 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 import memories from '../../../assets/memories.png'
 
 import { AppBar, Toolbar } from '@material-ui/core'
 
+import { Buttons } from '../Button'
 import { Containers } from '../Container'
 import { Image } from '../Image'
 import { Text } from '../Text'
@@ -19,9 +21,29 @@ export const Navbar = () => {
         <Image alt='memories' height='60' src={memories} width='60' />
       </Containers>
       <StyledToolbar>
-        { !user && <Text variant='h6'>Implementar log in...</Text> }
+        { !user ? renderUserNotLogged() : renderUserLogged() }
       </StyledToolbar>
     </StyledAppBar>
+  )
+}
+
+const renderUserLogged = () => {
+  const handleLogout = () => {
+
+  }
+
+  return (
+    <Buttons color='primary' onClick={handleLogout}>
+      <StyledLink to='/sign-in'>Cerrar sesión</StyledLink>
+    </Buttons>
+  )
+}
+
+const renderUserNotLogged = () => {
+  return (
+    <Buttons color='primary'>
+      <StyledLink to='/sign-in'>Iniciar sesion</StyledLink>
+    </Buttons>
   )
 }
 
@@ -38,4 +60,9 @@ const StyledToolbar = styled(Toolbar)`
   display: flex;
   justify-content: flex-end;
   width: 400px;
+`
+
+const StyledLink = styled(Link)`
+  color: white;
+  text-decoration: none;
 `

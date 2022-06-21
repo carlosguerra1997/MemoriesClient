@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 import { Formik } from 'formik'
 
@@ -19,7 +20,7 @@ export const SignUp = () => {
   }
 
   const handleSubmit = values => {
-
+    console.log('Values... ', values)
   }
 
   return (
@@ -36,6 +37,7 @@ export const SignUp = () => {
           <StyledTextFields name='password' placeholder='Contraseña' type='password' />
           <StyledTextFields name='confirmPassword' placeholder='Confirmar contraseña' type='password' />
           <StyledButton color='primary' onClick={handleSubmit}>Registrarse</StyledButton>
+          <StyledLink to='/sign-in'>Ya tienes una cuenta? Inicia sesión</StyledLink>
         </>
       )}
     </Formik>
@@ -58,6 +60,13 @@ const StyledTextFields = styled(TextFields)`
 
 const StyledButton = styled(Buttons)`
   &&& {
-    margin-top: 1rem;
+    margin: 1rem 0;
+    width: 100%;
   }
+`
+
+const StyledLink = styled(Link)`
+  color: black;
+  font-size: 12px;
+  text-decoration: none;
 `
