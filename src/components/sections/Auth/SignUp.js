@@ -1,8 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 import { Formik } from 'formik'
+
+import { signUp } from '../../../actions/auth'
 
 import { Auth } from './Auth'
 import { Buttons } from '../../common/Button'
@@ -11,6 +14,8 @@ import { Text } from '../../common/Text'
 import { TextFields } from '../../common/TextField'
 
 export const SignUp = () => {
+  const dispatch = useDispatch()
+
   const initialValues = {
     firstName: '',
     lastName: '',
@@ -20,7 +25,7 @@ export const SignUp = () => {
   }
 
   const handleSubmit = values => {
-    console.log('Values... ', values)
+    dispatch(signUp(values))
   }
 
   return (
