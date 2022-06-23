@@ -1,11 +1,4 @@
-import { clienteAxios } from '../config/axios'
+import { API } from '../config/axios'
 
-export const signInUser = async (authInfo) => {
-  const data = await clienteAxios.post('/auth/signin', authInfo)
-  return data
-}
-
-export const signUpUser = async (authInfo) => {
-  const data = await clienteAxios.post('/auth/signup', authInfo)
-  return data
-}
+export const signInUser = async (authInfo) => await API.post('/auth/signin', authInfo)
+export const signUpUser = async (authInfo) => await API.post('/auth/signup', authInfo)

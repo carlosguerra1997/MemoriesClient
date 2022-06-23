@@ -1,26 +1,7 @@
-import { clienteAxios } from '../config/axios'
+import { API } from '../config/axios'
 
-export const addNewPost = async (post) => {
-  const data = await clienteAxios.post('/posts/', post)
-  return data
-}
-
-export const getPosts = async () => {
-  const posts = await clienteAxios.get('/posts/')
-  return posts
-}
-
-export const updatePost = async (postId, post) => {
-  const updatedPost = await clienteAxios.put(`/posts/${postId}`, post)
-  return updatedPost
-}
-
-export const likePost = async (postId) => {
-  const postLiked = await clienteAxios.put(`/posts/${postId}/like`)
-  return postLiked
-}
-
-export const deletePost = async (postId) => {
-  const deletedPost = await clienteAxios.delete(`/posts/${postId}`)
-  return deletedPost
-}
+export const addNewPost = async (post) => await API.post('/posts/', post)
+export const getPosts = async () => await API.get('/posts/')
+export const updatePost = async (postId, post) => await API.put(`/posts/${postId}`, post)
+export const likePost = async (postId) => await API.put(`/posts/${postId}/like`)
+export const deletePost = async (postId) => await API.delete(`/posts/${postId}`)
