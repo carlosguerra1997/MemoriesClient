@@ -1,6 +1,11 @@
-// import { clienteAxios } from '../config/axios'
+import { clienteAxios } from '../config/axios'
+
+export const signInUser = async (post) => {
+  const data = await clienteAxios.post('/auth/signin', post)
+  return data
+}
 
 export const signUpUser = async (post) => {
-  // const data = await clienteAxios.post('/posts/', post)
-  // return data
+  const data = await clienteAxios.post('/auth/signup', post)
+  return data
 }
