@@ -7,4 +7,5 @@ export const DELETE_POST = '[DELETE] Delete post'
 
 export const SIGN_UP = '[POST] Sign up'
 export const SIGN_IN = '[POST] Sign in'
+export const CHECK_IF_SIGNED_IN = '[POST] Check if signed in'
 export const LOGOUT = '[POST] Logout'
