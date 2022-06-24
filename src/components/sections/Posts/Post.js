@@ -11,12 +11,12 @@ import { Text } from '../../common/Text'
 
 import { PostDetails } from './PostDetails'
 
-export const Post = ({ createdAt, creator, file, _id, likes, message, tags, title }) => {
+export const Post = ({ createdAt, file, _id, likes, message, name, tags, title }) => {
   return (
     <StyledCard>
       <StyledMedia image={file} title={title} />
       <StyledInfo>
-        <Text align='left' variant='h6'>{creator}</Text>
+        <Text align='left' variant='h6'>{name}</Text>
         <Text align='left' variant='body2'>{formatDate(createdAt)}</Text>
       </StyledInfo>
       <StyledMoreInfo>
