@@ -5,7 +5,7 @@ import { CardContent } from '@material-ui/core'
 import { PostActions } from './PostActions'
 import { Text } from '../../common/Text'
 
-export const PostDetails = ({ id, likes, message, tags, title }) => {
+export const PostDetails = ({ creator, id, likes, message, tags, title }) => {
   return (
     <>
       <StyledContainer>
@@ -17,7 +17,7 @@ export const PostDetails = ({ id, likes, message, tags, title }) => {
         <Text align='left' variant='h5' gutterBottom>{title}</Text>
         <Text align='left' color='textSecondary' variant='body1'>{message}</Text>
       </StyledCardContent>
-      <PostActions id={id} likes={likes} />
+      <PostActions creator={creator} id={id} likes={likes} />
     </>
   )
 }

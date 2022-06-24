@@ -12,7 +12,8 @@ import { Buttons } from '../../common/Button'
 import { CardActions } from '@material-ui/core'
 import { Text } from '../../common/Text'
 
-export const PostActions = ({ id, likes }) => {
+export const PostActions = ({ creator, id, likes }) => {
+  const user = JSON.parse(localStorage.getItem('profile'))
   const dispatch = useDispatch()
 
   const handleLikePost = () => {
@@ -28,9 +29,11 @@ export const PostActions = ({ id, likes }) => {
         <Buttons color='primary' onClick={handleLikePost} variant='text'>
           <Likes likes={likes} />
         </Buttons>
-        <Buttons color='primary' onClick={handleDeletePost} variant='text'>
-          <DeleteIcon fontSize='small' />
-        </Buttons>
+        { user?.userInfo.id === creator &&
+          <Buttons color='primary' onClick={handleDeletePost} variant='text'>
+            <DeleteIcon fontSize='small' />
+          </Buttons>
+        }
       </StyledActions>
   )
 }
