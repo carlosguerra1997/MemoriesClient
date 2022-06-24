@@ -1,9 +1,11 @@
 import React from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 
-import { Link } from 'react-router-dom'
-
 import { Formik } from 'formik'
+
+import { signIn } from '../../../actions/auth'
 
 import { Auth } from './Auth'
 import { Buttons } from '../../common/Button'
@@ -11,13 +13,17 @@ import { Text } from '../../common/Text'
 import { TextFields } from '../../common/TextField'
 
 export const SignIn = () => {
+  const dispatch = useDispatch()
+  const history = useHistory()
+
   const initialValues = {
     email: '',
     password: ''
   }
 
   const handleSubmit = values => {
-    console.log('Values... ', values)
+    dispatch(signIn(values))
+    history.push('/')
   }
 
   return (

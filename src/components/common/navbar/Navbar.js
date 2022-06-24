@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux'
 
 import memories from '../../../assets/memories.png'
+import styled from 'styled-components'
+
+import { checkIfSingedIn, logout } from '../../../actions/auth'
 
 import { AppBar, Toolbar } from '@material-ui/core'
 
@@ -12,7 +15,7 @@ import { Image } from '../Image'
 import { Text } from '../Text'
 
 export const Navbar = () => {
-  const user = null
+  const { user } = useSelector(state => state.auth)
 
   return (
     <StyledAppBar color='inherit' position='static'>
@@ -21,25 +24,40 @@ export const Navbar = () => {
         <Image alt='memories' height='60' src={memories} width='60' />
       </Containers>
       <StyledToolbar>
-        { !user ? renderUserNotLogged() : renderUserLogged() }
+        { !user ? renderUserNotLogged() : renderUserLogged(user) }
       </StyledToolbar>
     </StyledAppBar>
   )
 }
 
-const renderUserLogged = () => {
-  const handleLogout = () => {
+const renderUserLogged = (user) => {
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(checkIfSingedIn())
+  }, [])
+
+  const handleLogout = () => {
+    dispatch(logout())
   }
 
   return (
-    <Buttons color='primary' onClick={handleLogout}>
-      <StyledLink to='/sign-in'>Cerrar sesión</StyledLink>
-    </Buttons>
+    <>
+      <StyledText variant='body1'>{user?.name}</StyledText>
+      <Buttons color='primary' onClick={handleLogout}>
+        <StyledLink to='/sign-in'>Cerrar sesión</StyledLink>
+      </Buttons>
+    </>
   )
 }
 
 const renderUserNotLogged = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(checkIfSingedIn())
+  }, [])
+
   return (
     <Buttons color='primary'>
       <StyledLink to='/sign-in'>Iniciar sesion</StyledLink>
@@ -65,4 +83,8 @@ const StyledToolbar = styled(Toolbar)`
 const StyledLink = styled(Link)`
   color: white;
   text-decoration: none;
+`
+
+const StyledText = styled(Text)`
+  margin-right: 1rem;
 `
