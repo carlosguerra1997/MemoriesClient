@@ -16,7 +16,6 @@ export const PostsForm = () => {
   const [photo, setPhoto] = useState('')
 
   const initialValues = {
-    creator: '',
     title: '',
     message: '',
     tags: '',
@@ -35,7 +34,6 @@ export const PostsForm = () => {
           <Paper>
             <Text variant='h6'>Añadir recuerdo</Text>
             <StyledForm autoComplete='off'>
-              <StyledTextField name='creator' placeholder='Usuario' />
               <StyledTextField name='title' placeholder='Título' />
               <StyledTextField name='message' placeholder='Mensaje' />
               <StyledTextField name='tags' placeholder='Tags ej. #realfood' />

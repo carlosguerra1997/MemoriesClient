@@ -21,8 +21,8 @@ export const Posts = () => {
       : <StyledContainer container spacing={3}>
         {
           posts.map(post => (
-            <Grid item key={post._id} xs={12} sm={6}>
-              <Post {...post} />
+            <Grid item key={post.post._id} xs={12} sm={6}>
+              <Post name={post.creatorName} {...post.post} />
             </Grid>
           ))
         }
