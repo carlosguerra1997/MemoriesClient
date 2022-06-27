@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
@@ -20,6 +20,11 @@ export const SignIn = () => {
     email: '',
     password: ''
   }
+
+  useEffect(() => {
+    const user = localStorage.getItem('profile')
+    if (user) history.push('/posts')
+  }, [])
 
   const handleSubmit = values => {
     dispatch(signIn(values))
