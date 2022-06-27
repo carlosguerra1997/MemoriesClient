@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { Navbar } from '../../common/navbar/Navbar'
-
 import { Container } from '@material-ui/core'
 
+import { Navbar } from '../../common/navbar/Navbar'
 import { PostsLayout } from '../Posts/PostsLayout'
 
 export const Home = () => {

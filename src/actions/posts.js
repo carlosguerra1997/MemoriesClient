@@ -7,6 +7,7 @@ export const addPost = (post) => async dispatch => {
     const { data } = await addNewPost(post)
     dispatch({ type: ADD_NEW_POST, payload: data })
   } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
   }
 }
@@ -16,6 +17,7 @@ export const getAllPosts = () => async dispatch => {
     const { data } = await getPosts()
     dispatch({ type: GET_ALL_POSTS, payload: data })
   } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
   }
 }
@@ -25,6 +27,7 @@ export const updateAPost = (postId, post) => async dispatch => {
     const { data } = await updatePost(postId, post)
     dispatch({ type: UPDATE_POST, payload: data })
   } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
   }
 }
@@ -34,6 +37,7 @@ export const likeAPost = (postId) => async dispatch => {
     const { data } = await likePost(postId)
     dispatch({ type: LIKE_POST, payload: data })
   } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
   }
 }
@@ -42,6 +46,7 @@ export const setActivePost = (postId) => async dispatch => {
   try {
     dispatch({ type: SET_ACTIVE_POST, payload: postId })
   } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
   }
 }
@@ -51,6 +56,7 @@ export const deleteAPost = (postId) => async dispatch => {
     await deletePost(postId)
     dispatch({ type: DELETE_POST, payload: postId })
   } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
   }
 }
