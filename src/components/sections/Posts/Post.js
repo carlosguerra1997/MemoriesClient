@@ -9,7 +9,7 @@ import { Buttons } from '../../common/Button'
 import { Card, CardMedia } from '@material-ui/core'
 import { Text } from '../../common/Text'
 
-import { PostDetails } from './PostDetails'
+import { PostInfo } from './PostInfo'
 
 export const Post = ({ createdAt, creator, file, _id, likes, message, name, tags, title }) => {
   return (
@@ -24,7 +24,7 @@ export const Post = ({ createdAt, creator, file, _id, likes, message, name, tags
           <MoreHorizIcon fontSize='medium' />
         </StyledButton>
       </StyledMoreInfo>
-      <PostDetails creator={creator} id={_id} likes={likes} message={message} tags={tags} title={title} />
+      <PostInfo creator={creator} id={_id} likes={likes} message={message} tags={tags} title={title} />
     </StyledCard>
   )
 }

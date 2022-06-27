@@ -7,7 +7,7 @@ import { PostsLayout } from '../Posts/PostsLayout'
 
 export const Home = () => {
   return (
-    <Container maxWidth='lg'>
+    <Container maxWidth='xl'>
       <Navbar />
       <PostsLayout />
     </Container>
