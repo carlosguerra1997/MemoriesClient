@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { Container, Grid, Grow } from '@material-ui/core'
 
+import { Paginate } from '../../common/Pagination'
 import { Posts } from '../Posts/Posts'
 import { PostsForm } from './form/PostsForm'
 
@@ -16,6 +17,7 @@ export const PostsLayout = () => {
             </Grid>
             <Grid item xs={12} sm={4}>
               <PostsForm />
+              <Paginate />
             </Grid>
           </StyledGrid>
         </Container>
