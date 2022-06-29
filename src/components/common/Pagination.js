@@ -7,15 +7,15 @@ import { Paper } from '@material-ui/core'
 
 export const Paginate = () => {
   return (
-    <Paper>
-      <StyledPagination
+    <StyledPaper>
+      <Pagination
         color='primary'
         count={5}
         page={1}
         renderItem={item => renderPaginationItem(item)}
         variant='outlined'
       />
-    </Paper>
+    </StyledPaper>
   )
 }
 
@@ -27,7 +27,7 @@ const renderPaginationItem = (item) => (
   />
 )
 
-const StyledPagination = styled(Pagination)`
+const StyledPaper = styled(Paper)`
   border-radius: 4px;
   margin-top: 1rem;
   padding: 15px;

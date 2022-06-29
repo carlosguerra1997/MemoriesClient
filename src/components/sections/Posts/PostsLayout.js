@@ -1,19 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { useHistory } from 'react-router-dom'
-import { useGetPage } from '../../../hooks/useGetPage'
-
 import { Container, Grid, Grow } from '@material-ui/core'
 
-import { Paginate } from '../../common/Pagination'
+import { AppBars } from '../../common/AppBar'
 import { Posts } from '../Posts/Posts'
-import { PostsForm } from './form/PostsForm'
 
 export const PostsLayout = () => {
-  const page = useGetPage()
-  const history = useHistory()
-
   return (
     <Grow in>
         <Container>
@@ -22,8 +15,7 @@ export const PostsLayout = () => {
               <Posts />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <PostsForm />
-              <Paginate />
+              <AppBars />
             </Grid>
           </StyledGrid>
         </Container>
