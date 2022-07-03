@@ -1,6 +1,6 @@
 import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
 
-import { addNewPost, deletePost, getPosts, likePost, updatePost } from '../api/Posts'
+import { addNewPost, deletePost, fetchPostsBySearch, getPosts, likePost, updatePost } from '../api/Posts'
 
 export const addPost = (post) => async dispatch => {
   try {
@@ -15,6 +15,16 @@ export const addPost = (post) => async dispatch => {
 export const getAllPosts = () => async dispatch => {
   try {
     const { data } = await getPosts()
+    dispatch({ type: GET_ALL_POSTS, payload: data })
+  } catch (error) {
+    // IMPLEMENTAR MOSTRADO DE ALERTA.
+    throw new Error(error)
+  }
+}
+
+export const getPostsBySearch = searchQuery => async dispatch => {
+  try {
+    const { data } = await fetchPostsBySearch(searchQuery)
     dispatch({ type: GET_ALL_POSTS, payload: data })
   } catch (error) {
     // IMPLEMENTAR MOSTRADO DE ALERTA.
