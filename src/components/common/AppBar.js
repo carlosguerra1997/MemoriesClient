@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { Formik } from 'formik'
 
-// import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 // import { useGetPage } from '../../../hooks/useGetPage'
 // import { useSearchQuery } from '../../../hooks/useSearchQuery'
 
@@ -14,12 +14,19 @@ import { ChipInputs } from './ChipInput'
 import { TextFields } from './TextField'
 
 export const AppBars = () => {
+  const history = useHistory()
+
   const initialValues = {
-    searchMemories: ''
+    searchMemories: '',
+    tags: []
   }
 
   const handleSubmit = (values) => {
-    console.log(values)
+    if (values.searchMemories.trim()) {
+      console.log(values)
+    } else {
+      history.push('/')
+    }
   }
 
   const handleKeyPress = e => {
@@ -35,14 +42,13 @@ export const AppBars = () => {
           {({ handleSubmit }) => (
             <>
               <TextFields name='searchMemories' onKeyPress={handleKeyPress} placeholder='Buscar memorias' />
-              <ChipInputs />
+              <ChipInputs name='tags' />
               <Buttons color='primary' onClick={handleSubmit}>Buscar</Buttons>
             </>
           )}
         </Formik>
       </StyledAppBar>
     </>
-
   )
 }
 
