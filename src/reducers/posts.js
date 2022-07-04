@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
+import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
 
 const initialState = {
   posts: [],
@@ -13,6 +13,7 @@ export const postsReducer = (state = initialState, action) => {
         posts: [...state.posts, action.payload]
       }
     case GET_ALL_POSTS:
+    case GET_POSTS_BY_SEARCH:
       return {
         ...state,
         posts: action.payload
