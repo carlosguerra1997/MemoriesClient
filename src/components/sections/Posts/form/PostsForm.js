@@ -32,7 +32,7 @@ export const PostsForm = () => {
     <Formik initialValues={initialValues} onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}>
       {({ handleSubmit }) => (
           <Paper>
-            <Text variant='h6'>Añadir recuerdo</Text>
+            <StyledText variant='h6'>Añadir recuerdo</StyledText>
             <StyledForm autoComplete='off'>
               <StyledTextField name='title' placeholder='Título' />
               <StyledTextField name='message' placeholder='Mensaje' />
@@ -57,6 +57,10 @@ const StyledForm = styled.form`
   flexWrap: wrap;
   justifyContent: center;
   padding: 1rem;
+`
+
+const StyledText = styled(Text)`
+  padding-top: 1rem;
 `
 
 const StyledTextField = styled(TextFields)`

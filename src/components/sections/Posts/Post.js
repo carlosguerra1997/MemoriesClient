@@ -13,7 +13,7 @@ import { PostInfo } from './PostInfo'
 
 export const Post = ({ createdAt, creator, file, _id, likes, message, name, tags, title }) => {
   return (
-    <StyledCard>
+    <StyledCard elevation={4} raised>
       <StyledMedia image={file} title={title} />
       <StyledInfo>
         <Text align='left' variant='h6'>{name}</Text>

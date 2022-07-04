@@ -14,8 +14,8 @@ export const PostInfo = ({ creator, id, likes, message, tags, title }) => {
         </Text>
       </StyledContainer>
       <StyledCardContent>
-        <Text align='left' variant='h5' gutterBottom>{title}</Text>
-        <Text align='left' color='textSecondary' variant='body1'>{message}</Text>
+        <StyledText align='left' variant='h5' gutterBottom>{title}</StyledText>
+        <StyledText align='left' color='textSecondary' variant='body1'>{message}</StyledText>
       </StyledCardContent>
       <PostActions creator={creator} id={id} likes={likes} />
     </>
@@ -29,6 +29,14 @@ const StyledContainer = styled.div`
 `
 
 const StyledCardContent = styled(CardContent)`
-  margin: 15px;
   padding: 0;
+  width: 100%;
+`
+
+const StyledText = styled(Text)`
+  display: -webkit-box;
+  padding: 0 1rem;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 `

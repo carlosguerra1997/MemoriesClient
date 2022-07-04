@@ -11,24 +11,28 @@ import { PostsForm } from './form/PostsForm'
 export const PostsLayout = () => {
   return (
     <Grow in>
-        <Container>
+        <StyledContainer>
           <StyledGrid alignItems='stretch' container justifyContent='space-between' spacing={3}>
-            <Grid item xs={12} sm={7}>
+            <Grid item xs={12} sm={6} md={9}>
               <Posts />
             </Grid>
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={12} sm={6} md={3}>
               <AppBars />
               <PostsForm />
               <Paginate />
             </Grid>
           </StyledGrid>
-        </Container>
+        </StyledContainer>
       </Grow>
   )
 }
 
+const StyledContainer = styled(Container)`
+  max-width: 100%;
+`
+
 const StyledGrid = styled(Grid)`
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 599px) {
     flex-direction: column-reverse;
   }
 `
