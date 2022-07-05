@@ -1,8 +1,10 @@
 import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
 
 const initialState = {
-  posts: [],
-  activePost: {}
+  activePost: {},
+  currentPage: 1,
+  numberOfPages: '',
+  posts: []
 }
 
 export const postsReducer = (state = initialState, action) => {
@@ -13,6 +15,12 @@ export const postsReducer = (state = initialState, action) => {
         posts: [...state.posts, action.payload]
       }
     case GET_ALL_POSTS:
+      return {
+        ...state,
+        currentPage: action.payload.currentPage,
+        numberOfPages: action.payload.numberOfPages,
+        posts: action.payload.allPosts
+      }
     case GET_POSTS_BY_SEARCH:
       return {
         ...state,
