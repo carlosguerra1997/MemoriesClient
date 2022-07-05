@@ -10,3 +10,6 @@ export const SIGN_UP = '[POST] Sign up'
 export const SIGN_IN = '[POST] Sign in'
 export const CHECK_IF_SIGNED_IN = '[POST] Check if signed in'
 export const LOGOUT = '[POST] Logout'
+
+export const START_LOADING = 'START_LOADING'
+export const FINISH_LOADING = 'FINISH_LOADING'
