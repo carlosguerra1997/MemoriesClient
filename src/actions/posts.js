@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
+import { ADD_NEW_POST, DELETE_POST, FINISH_LOADING, GET_ALL_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, START_LOADING, UPDATE_POST } from '../constants/actionTypes'
 
 import { addNewPost, deletePost, fetchPostsBySearch, getPosts, likePost, updatePost } from '../api/Posts'
 
@@ -12,10 +12,12 @@ export const addPost = (post) => async dispatch => {
   }
 }
 
-export const getAllPosts = () => async dispatch => {
+export const getAllPosts = (page) => async dispatch => {
   try {
-    const { data } = await getPosts()
+    dispatch({ type: START_LOADING })
+    const { data } = await getPosts(page)
     dispatch({ type: GET_ALL_POSTS, payload: data })
+    dispatch({ type: FINISH_LOADING })
   } catch (error) {
     // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)
@@ -24,8 +26,10 @@ export const getAllPosts = () => async dispatch => {
 
 export const getPostsBySearch = searchQuery => async dispatch => {
   try {
+    dispatch({ type: START_LOADING })
     const { data } = await fetchPostsBySearch(searchQuery)
     dispatch({ type: GET_POSTS_BY_SEARCH, payload: data })
+    dispatch({ type: FINISH_LOADING })
   } catch (error) {
     // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)

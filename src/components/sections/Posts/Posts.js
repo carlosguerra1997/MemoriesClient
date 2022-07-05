@@ -7,9 +7,12 @@ import { Post } from './Post'
 
 export const Posts = () => {
   const { posts } = useSelector(state => state.posts)
+  const { isLoading } = useSelector(state => state.loading)
+
+  if (!posts.length && !isLoading) return 'No posts available'
 
   return (
-    !posts.length
+    isLoading
       ? <CircularProgress />
       : <StyledContainer container spacing={3}>
         {
