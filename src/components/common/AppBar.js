@@ -5,10 +5,8 @@ import { Formik } from 'formik'
 
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
-// import { useGetPage } from '../../../hooks/useGetPage'
-// import { useSearchQuery } from '../../../hooks/useSearchQuery'
 
-import { getPostsBySearch } from '../../actions/posts'
+import { getAllPosts, getPostsBySearch } from '../../actions/posts'
 
 import { AppBar } from '@material-ui/core'
 import { Buttons } from './Button'
@@ -24,19 +22,16 @@ export const AppBars = () => {
     tags: []
   }
 
-  const handleSubmit = (values) => {
-    if (values.searchMemories.trim()) {
-      const { searchMemories } = values
+  const handleSubmit = (values, resetForm) => {
+    const { searchMemories } = values
+    if (searchMemories.trim()) {
       dispatch(getPostsBySearch({ searchMemories }))
+      history.push(`/posts/search?searchQuery=${searchMemories}`)
     } else {
-      history.push('/')
+      dispatch(getAllPosts())
+      history.push('/posts')
     }
-  }
-
-  const handleKeyPress = e => {
-    if (e.keyCode === 13) {
-      // search post
-    }
+    resetForm()
   }
 
   return (
@@ -45,7 +40,7 @@ export const AppBars = () => {
         <Formik initialValues={initialValues} onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}>
           {({ handleSubmit }) => (
             <>
-              <TextFields name='searchMemories' onKeyPress={handleKeyPress} placeholder='Buscar memorias' />
+              <TextFields name='searchMemories' placeholder='Buscar memorias' />
               <ChipInputs name='tags' />
               <Buttons color='primary' onClick={handleSubmit}>Buscar</Buttons>
             </>

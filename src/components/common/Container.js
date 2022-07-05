@@ -7,10 +7,11 @@ export const Containers = ({
   children,
   component,
   maxWidth,
+  onClick,
   ...rest
 }) => {
   return (
-    <StyledDiv component={component} maxWidth={maxWidth} {...rest}>
+    <StyledDiv component={component} maxWidth={maxWidth} onClick={onClick} {...rest}>
       {children}
     </StyledDiv>
   )
