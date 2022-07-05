@@ -1,17 +1,28 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
+
+import { useDispatch, useSelector } from 'react-redux'
+
+import { getAllPosts } from '../../actions/posts'
 
 import { Pagination, PaginationItem } from '@material-ui/lab'
 import { Paper } from '@material-ui/core'
 
-export const Paginate = () => {
+export const Paginate = ({ page }) => {
+  const dispatch = useDispatch()
+  const { numberOfPages } = useSelector(state => state.posts)
+
+  useEffect(() => {
+    if (page) dispatch(getAllPosts(page))
+  }, [page])
+
   return (
     <StyledPaper>
       <Pagination
         color='primary'
-        count={5}
-        page={1}
+        count={Number(numberOfPages)}
+        page={Number(page) || 1}
         renderItem={item => renderPaginationItem(item)}
         variant='outlined'
       />
@@ -22,7 +33,7 @@ export const Paginate = () => {
 const renderPaginationItem = (item) => (
   <PaginationItem
     component={Link}
-    to={`/posts?page=${1}`}
+    to={`/posts?page=${item.page}`}
     {...item}
   />
 )

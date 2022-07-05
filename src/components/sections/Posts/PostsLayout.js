@@ -1,6 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useGetPage } from '../../../hooks/useGetPage'
+// import { useSearchQuery } from '../../../hooks/useSearchQuery'
+
 import { Container, Grid, Grow } from '@material-ui/core'
 
 import { AppBars } from '../../common/AppBar'
@@ -9,6 +12,8 @@ import { Posts } from '../Posts/Posts'
 import { PostsForm } from './form/PostsForm'
 
 export const PostsLayout = () => {
+  const page = useGetPage()
+
   return (
     <Grow in>
         <StyledContainer>
@@ -19,7 +24,7 @@ export const PostsLayout = () => {
             <Grid item xs={12} sm={6} md={3}>
               <AppBars />
               <PostsForm />
-              <Paginate />
+              <Paginate page={page} />
             </Grid>
           </StyledGrid>
         </StyledContainer>
