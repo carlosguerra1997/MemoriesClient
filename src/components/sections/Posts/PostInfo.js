@@ -9,9 +9,9 @@ export const PostInfo = ({ creator, id, likes, message, tags, title }) => {
   return (
     <>
       <StyledContainer>
-        <Text variant='body2' color='textSecondary'>
+        <StyledTags align='left' variant='body2' color='textSecondary'>
           {tags.map(tag => tag)}
-        </Text>
+        </StyledTags>
       </StyledContainer>
       <StyledCardContent>
         <StyledText align='left' variant='h5' gutterBottom>{title}</StyledText>
@@ -37,6 +37,13 @@ const StyledText = styled(Text)`
   display: -webkit-box;
   padding: 0 1rem;
   overflow: hidden;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+`
+
+const StyledTags = styled(Text)`
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 `
