@@ -1,29 +1,28 @@
-import React from 'react'
 import styled from 'styled-components'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 
 import { formatDate } from '../../../utils/formatDate'
 
-import MoreHorizIcon from '@material-ui/icons/MoreHoriz'
-
-import { Buttons } from '../../common/Button'
 import { Card, CardMedia } from '@material-ui/core'
 import { Text } from '../../common/Text'
 
 import { PostInfo } from './PostInfo'
 
 export const Post = ({ createdAt, creator, file, _id, likes, message, name, tags, title }) => {
+  const history = useHistory()
+
+  const handlePostDetails = () => history.push(`/posts/${_id}`)
+
   return (
     <StyledCard elevation={4} raised>
-      <StyledMedia image={file} title={title} />
-      <StyledInfo>
-        <Text align='left' variant='h6'>{name}</Text>
-        <Text align='left' variant='body2'>{formatDate(createdAt)}</Text>
-      </StyledInfo>
-      <StyledMoreInfo>
-        <StyledButton onClick={() => {}}>
-          <MoreHorizIcon fontSize='medium' />
-        </StyledButton>
-      </StyledMoreInfo>
+      <StyledDiv onClick={handlePostDetails}>
+        <StyledMedia image={file} title={title} />
+        <StyledInfo>
+          <Text align='left' variant='h6'>{name}</Text>
+          <Text align='left' variant='body2'>{formatDate(createdAt)}</Text>
+        </StyledInfo>
+      </StyledDiv>
       <PostInfo creator={creator} id={_id} likes={likes} message={message} tags={tags} title={title} />
     </StyledCard>
   )
@@ -43,24 +42,15 @@ const StyledMedia = styled(CardMedia)`
   background-blend-mode: darken;
 `
 
+const StyledDiv = styled.div`
+  :hover  {
+    cursor: pointer;
+  }
+`
+
 const StyledInfo = styled.div`
   color: white;
   left: 20px;
   position: absolute;
   top: 20px;
-`
-
-const StyledMoreInfo = styled.div`
-  color: white;
-  right: 10px;
-  position: absolute;
-  top: 20px;
-`
-
-const StyledButton = styled(Buttons)`
-  background-color: transparent;
-  color: white;
-  :hover {
-    background-color: transparent;
-  }
 `
