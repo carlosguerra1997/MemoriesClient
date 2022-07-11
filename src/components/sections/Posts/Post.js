@@ -1,18 +1,25 @@
 import styled from 'styled-components'
 import React from 'react'
+
+import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
+
+import { setActivePost } from '../../../actions/posts'
 
 import { formatDate } from '../../../utils/formatDate'
 
 import { Card, CardMedia } from '@material-ui/core'
+import { PostInfo } from './PostInfo'
 import { Text } from '../../common/Text'
 
-import { PostInfo } from './PostInfo'
-
 export const Post = ({ createdAt, creator, file, _id, likes, message, name, tags, title }) => {
+  const dispatch = useDispatch()
   const history = useHistory()
 
-  const handlePostDetails = () => history.push(`/posts/${_id}`)
+  const handlePostDetails = () => {
+    history.push(`/posts/${_id}`)
+    dispatch(setActivePost(_id))
+  }
 
   return (
     <StyledCard elevation={4} raised>
