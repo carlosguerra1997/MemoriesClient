@@ -38,7 +38,7 @@ export const postsReducer = (state = initialState, action) => {
     case SET_ACTIVE_POST:
       return {
         ...state,
-        activePost: action.payload
+        activePost: state.posts.filter(post => post.post._id === action.payload)
       }
     case DELETE_POST:
       return {
