@@ -1,5 +1,6 @@
 export const ADD_NEW_POST = '[POSTS] Add new post'
 export const GET_ALL_POSTS = '[POSTS] Get all posts'
+export const GET_RECOMMENDED_POSTS = '[POSTS] Get recommended posts'
 export const GET_POSTS_BY_SEARCH = '[POSTS] Get posts by search'
 export const UPDATE_POST = '[POSTS] Update post'
 export const LIKE_POST = '[POSTS] Like post'

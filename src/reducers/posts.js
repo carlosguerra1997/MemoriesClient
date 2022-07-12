@@ -1,10 +1,11 @@
-import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
+import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, GET_RECOMMENDED_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
 
 const initialState = {
   activePost: {},
   currentPage: 1,
   numberOfPages: '',
-  posts: []
+  posts: [],
+  recommendedPosts: []
 }
 
 export const postsReducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ export const postsReducer = (state = initialState, action) => {
         currentPage: action.payload.currentPage,
         numberOfPages: action.payload.numberOfPages,
         posts: action.payload.allPosts
+      }
+    case GET_RECOMMENDED_POSTS:
+      return {
+        ...state,
+        recommendedPosts: action.payload
       }
     case GET_POSTS_BY_SEARCH:
       return {
