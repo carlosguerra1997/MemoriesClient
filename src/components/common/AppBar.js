@@ -10,7 +10,6 @@ import { getAllPosts, getPostsBySearch } from '../../actions/posts'
 
 import { AppBar } from '@material-ui/core'
 import { Buttons } from './Button'
-import { ChipInputs } from './ChipInput'
 import { TextFields } from './TextField'
 
 export const AppBars = () => {
@@ -40,8 +39,7 @@ export const AppBars = () => {
         <Formik initialValues={initialValues} onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}>
           {({ handleSubmit }) => (
             <>
-              <TextFields name='searchMemories' placeholder='Buscar memorias' />
-              <ChipInputs name='tags' />
+              <StyledTextField name='searchMemories' placeholder='Buscar memorias' />
               <Buttons color='primary' onClick={handleSubmit}>Buscar</Buttons>
             </>
           )}
@@ -56,4 +54,8 @@ const StyledAppBar = styled(AppBar)`
   display: flex;
   margin-bottom: 1rem;
   padding: 15px;
+`
+
+const StyledTextField = styled(TextFields)`
+  margin-bottom: 1rem;
 `
