@@ -9,7 +9,7 @@ export const Posts = () => {
   const { posts } = useSelector(state => state.posts)
   const { isLoading } = useSelector(state => state.loading)
 
-  if (!posts.length && !isLoading) return 'No posts available'
+  if (!posts?.length && !isLoading) return <p>No posts available</p>
 
   return (
     isLoading
@@ -17,7 +17,7 @@ export const Posts = () => {
       : <StyledContainer container spacing={3}>
         {
           posts.map(post => (
-            <Grid item key={post.post._id} xs={12} sm={12} md={6} lg={3}>
+            <Grid item key={post.post._id} xs={12} sm={12} md={6} lg={4}>
               <Post name={post.creatorName} {...post.post} />
             </Grid>
           ))

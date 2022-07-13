@@ -3,7 +3,6 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 import { Paper } from '@material-ui/core'
-
 import { Text } from '../../../common/Text'
 
 export const PostDetails = () => {
@@ -44,7 +43,7 @@ const StyledContainer = styled.div`
 const StyledSection = styled.div`
   border-radius: 1rem;
   padding 2rem;
-  width: 50%;
+  width: 75%;
 
   @media screen and (max-width: 1050px) {
     width: 100%;
@@ -54,6 +53,7 @@ const StyledSection = styled.div`
 const StyledImageContainer = styled.div`
   display: flex;
   justify-content: center;
+  padding: 1rem 0;
 `
 
 const StyledImage = styled.img`
