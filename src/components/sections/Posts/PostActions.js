@@ -41,7 +41,7 @@ export const PostActions = ({ creator, id, likes }) => {
 const Likes = (likes) => {
   const user = JSON.parse(localStorage.getItem('profile'))
 
-  if (likes.likes.length > 0) {
+  if (likes?.likes?.length > 0) {
     return likes.likes.find(like => like === user?.userInfo.id)
       ? (
         <>
