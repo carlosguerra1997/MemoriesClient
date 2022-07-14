@@ -23,13 +23,20 @@ export const RecommendedPosts = () => {
     <div>
       <StyledText align='left' gutterBottom variant='h5'>También podría interesarte...</StyledText>
       <Dividers />
-      {
-        recommendedPosts.length && recommendedPosts.map(post => <RecommendedPost key={post.post._id} {...post} />)
-      }
+      <StyledDiv>
+        {
+          recommendedPosts.length && recommendedPosts.map(post => <RecommendedPost key={post.post._id} {...post} />)
+        }
+      </StyledDiv>
   </div>
   )
 }
 
 const StyledText = styled(Text)`
   margin: 1.5rem 0 0 1.5rem;
+`
+
+const StyledDiv = styled.div`
+  display: flex;
+  gap: 1rem;
 `

@@ -13,7 +13,7 @@ export const Posts = () => {
 
   return (
     isLoading
-      ? <CircularProgress />
+      ? <StyledLoader><CircularProgress /></StyledLoader>
       : <StyledContainer container spacing={3}>
         {
           posts.map(post => (
@@ -29,4 +29,10 @@ export const Posts = () => {
 const StyledContainer = styled(Grid)`
   align-items: center;  
   display: flex;
+`
+
+const StyledLoader = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
 `
