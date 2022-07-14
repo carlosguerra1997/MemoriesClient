@@ -18,7 +18,7 @@ export const PostsForm = () => {
   const initialValues = {
     title: '',
     message: '',
-    tags: '',
+    tags: [],
     file: ''
   }
 
@@ -36,7 +36,7 @@ export const PostsForm = () => {
             <StyledForm autoComplete='off'>
               <StyledTextField name='title' placeholder='Título' />
               <StyledTextField name='message' placeholder='Mensaje' />
-              <StyledTextField name='tags' placeholder='Tags ej. #realfood' />
+              <StyledTextField name='tags' placeholder='Tags ej. #realfood #fruit' />
               <FileBase
                 name='image'
                 multiple={false}
