@@ -2,6 +2,9 @@ import styled from 'styled-components'
 import React from 'react'
 import { useSelector } from 'react-redux'
 
+import { Comments } from './comment/Comments'
+
+import { Dividers } from '../../../common/Divider'
 import { Paper } from '@material-ui/core'
 import { Text } from '../../../common/Text'
 
@@ -17,6 +20,8 @@ export const PostDetails = () => {
           <Text align='left' color='textSecondary' variant='h6'>{post.tags}</Text>
           <Text align='left' gutterBottom variant='body1'>{post.message}</Text>
           <Text align='right' variant='h6'>Autor: {creatorName}</Text>
+          <Dividers />
+          <Comments post={post} />
         </StyledSection>
         <StyledImageContainer>
           <StyledImage src={post.file} />
