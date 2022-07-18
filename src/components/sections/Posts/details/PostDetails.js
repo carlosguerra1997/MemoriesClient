@@ -63,8 +63,9 @@ const StyledImageContainer = styled.div`
 
 const StyledImage = styled.img`
   border-radius: 2rem;
-  max-height: 600px;
-  width: 90%;
+  max-height: 400px;
+  padding: 1rem;
+  width: 100%;
 `
 
 const StyledDivider = styled(Dividers)`
