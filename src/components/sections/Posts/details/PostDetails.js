@@ -20,7 +20,7 @@ export const PostDetails = () => {
           <Text align='left' color='textSecondary' variant='h6'>{post.tags}</Text>
           <Text align='left' gutterBottom variant='body1'>{post.message}</Text>
           <Text align='right' variant='h6'>Autor: {creatorName}</Text>
-          <Dividers />
+          <StyledDivider />
           <Comments post={post} />
         </StyledSection>
         <StyledImageContainer>
@@ -65,4 +65,10 @@ const StyledImage = styled.img`
   border-radius: 2rem;
   max-height: 600px;
   width: 90%;
+`
+
+const StyledDivider = styled(Dividers)`
+  &&& {
+    margin: 1rem 0;
+  }
 `

@@ -39,4 +39,8 @@ const StyledText = styled(Text)`
 const StyledDiv = styled.div`
   display: flex;
   gap: 1rem;
+
+  @media screen and (max-width: 699px) {
+    flex-direction: column;
+  }
 `
