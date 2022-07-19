@@ -17,7 +17,7 @@ export const PostDetails = () => {
       <StyledContainer>
         <StyledSection>
           <Text align='left' variant='h3'>{post.title}</Text>
-          <Text align='left' color='textSecondary' variant='h6'>{post.tags}</Text>
+          <Text align='left' color='textSecondary' variant='h6'>{post.tags.join(' ')}</Text>
           <Text align='left' gutterBottom variant='body1'>{post.message}</Text>
           <Text align='right' variant='h6'>Autor: {creatorName}</Text>
           <StyledDivider />
