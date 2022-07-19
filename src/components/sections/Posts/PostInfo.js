@@ -10,7 +10,7 @@ export const PostInfo = ({ creator, id, likes, message, tags, title }) => {
     <>
       <StyledContainer>
         <StyledTags align='left' variant='body2' color='textSecondary'>
-          {tags.map(tag => tag)}
+          {tags.join(' ')}
         </StyledTags>
       </StyledContainer>
       <StyledCardContent>
