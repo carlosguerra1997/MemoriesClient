@@ -10,6 +10,7 @@ export const TextFields = ({ name, onKeyPress, placeholder, type = 'text', ...re
   return (
     <TextField
       error={meta.error}
+      helperText={meta.error}
       fullWidth
       onChange={ ({ target }) => helpers.setValue(target.value) }
       onKeyPress={onKeyPress}
