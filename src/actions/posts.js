@@ -68,6 +68,7 @@ export const likeAPost = (postId) => async dispatch => {
 
 export const commentAPost = (postId, comment) => async dispatch => {
   try {
+    console.log('Aqui entro... ', comment)
     const { data } = await commentPost(postId, comment)
     console.log('Data... ', data)
     // dispatch({ type: LIKE_POST, payload: data })
