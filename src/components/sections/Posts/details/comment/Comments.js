@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 import { Formik } from 'formik'
 import { commentSchema } from '../../../../../utils/validationSchemas'
 
+import { commentAPost } from '../../../../../actions/posts'
+
 import { Buttons } from '../../../../common/Button'
 import { Containers } from '../../../../common/Container'
 import { TextFields } from '../../../../common/TextField'
@@ -20,8 +22,7 @@ export const Comments = ({ post }) => {
   }, [])
 
   const handleSubmit = (values, resetForm) => {
-    console.log('Values... ', values)
-    dispatch()
+    dispatch(commentAPost(post._id, values))
     resetForm()
   }
 
