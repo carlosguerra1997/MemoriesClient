@@ -14,7 +14,7 @@ import { Text } from '../../../../common/Text'
 
 export const Comments = ({ post }) => {
   const dispatch = useDispatch()
-  const initialValues = { newComment: '' }
+  const initialValues = { comment: '' }
   const [comments, setComments] = useState([1, 2, 3, 4])
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export const Comments = ({ post }) => {
           {({ handleSubmit }) => (
             <StyledContainer>
               <Text align='left' gutterBottom variant='h6'>Deja un comentario</Text>
-              <TextFields multiline name='newComment' maxRows={4} minRows={4} placeholder='Escribe un comentario...' variant='outlined' />
+              <TextFields multiline name='comment' maxRows={4} minRows={4} placeholder='Escribe un comentario...' variant='outlined' />
               <StyledButton color='primary' onClick={handleSubmit} type='submit' variant='contained'>Comentar</StyledButton>
             </StyledContainer>
           )}
