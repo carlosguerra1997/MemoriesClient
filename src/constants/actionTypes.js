@@ -4,6 +4,7 @@ export const GET_RECOMMENDED_POSTS = '[POSTS] Get recommended posts'
 export const GET_POSTS_BY_SEARCH = '[POSTS] Get posts by search'
 export const UPDATE_POST = '[POSTS] Update post'
 export const LIKE_POST = '[POSTS] Like post'
+export const COMMENT_POST = '[POSTS] Comment post'
 export const SET_ACTIVE_POST = '[POSTS] Set active post'
 export const DELETE_POST = '[DELETE] Delete post'
 

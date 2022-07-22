@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useDispatch } from 'react-redux'
 
 import { Formik } from 'formik'
@@ -15,11 +15,7 @@ import { Text } from '../../../../common/Text'
 export const Comments = ({ post }) => {
   const dispatch = useDispatch()
   const initialValues = { comment: '' }
-  const [comments, setComments] = useState([1, 2, 3, 4])
-
-  useEffect(() => {
-    setComments([1, 2, 3, 4])
-  }, [])
+  const { comments } = post
 
   const handleSubmit = (values, resetForm) => {
     dispatch(commentAPost(post._id, values))
@@ -30,12 +26,7 @@ export const Comments = ({ post }) => {
     <div>
       <Containers display='flex'>
         <div>
-          <Text align='left' gutterBottom variant='h6'>Comments</Text>
-          {
-            comments.map((c, i) => (
-              <Text align='left' key={i} variant='subtitle1'>Comment {i}</Text>
-            ))
-          }
+          { comments.length ? renderComments(comments) : '' }
         </div>
         <Formik initialValues={initialValues} validationSchema={commentSchema} onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}>
           {({ handleSubmit }) => (
@@ -48,6 +39,19 @@ export const Comments = ({ post }) => {
         </Formik>
       </Containers>
     </div>
+  )
+}
+
+const renderComments = comments => {
+  return (
+    <>
+      <Text align='left' gutterBottom variant='h6'>Comments</Text>
+      {
+        comments.map(comment => (
+          <Text align='left' key={comment} variant='subtitle1'>{comment}</Text>
+        ))
+      }
+    </>
   )
 }
 
