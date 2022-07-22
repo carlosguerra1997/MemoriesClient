@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, DELETE_POST, FINISH_LOADING, GET_ALL_POSTS, GET_RECOMMENDED_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, START_LOADING, UPDATE_POST } from '../constants/actionTypes'
+import { ADD_NEW_POST, COMMENT_POST, DELETE_POST, FINISH_LOADING, GET_ALL_POSTS, GET_RECOMMENDED_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, START_LOADING, UPDATE_POST } from '../constants/actionTypes'
 
 import { addNewPost, commentPost, deletePost, fetchPostsBySearch, getPosts, getPostsRecommended, likePost, updatePost } from '../api/Posts'
 
@@ -68,10 +68,8 @@ export const likeAPost = (postId) => async dispatch => {
 
 export const commentAPost = (postId, comment) => async dispatch => {
   try {
-    console.log('Aqui entro... ', comment)
     const { data } = await commentPost(postId, comment)
-    console.log('Data... ', data)
-    // dispatch({ type: LIKE_POST, payload: data })
+    dispatch({ type: COMMENT_POST, payload: data })
   } catch (error) {
     // IMPLEMENTAR MOSTRADO DE ALERTA.
     throw new Error(error)

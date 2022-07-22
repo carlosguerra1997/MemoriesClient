@@ -1,4 +1,4 @@
-import { ADD_NEW_POST, DELETE_POST, GET_ALL_POSTS, GET_RECOMMENDED_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
+import { ADD_NEW_POST, COMMENT_POST, DELETE_POST, GET_ALL_POSTS, GET_RECOMMENDED_POSTS, GET_POSTS_BY_SEARCH, LIKE_POST, SET_ACTIVE_POST, UPDATE_POST } from '../constants/actionTypes'
 
 const initialState = {
   activePost: {},
@@ -38,6 +38,14 @@ export const postsReducer = (state = initialState, action) => {
         ...state,
         posts: state.posts.map(post => post.post._id === action.payload.updatedPostLikes._id
           ? { post: action.payload.updatedPostLikes, creatorName: action.payload.name }
+          : post
+        )
+      }
+    case COMMENT_POST:
+      return {
+        ...state,
+        posts: state.posts.map(post => post._id === action.payload.postUpdated._id
+          ? action.payload
           : post
         )
       }
