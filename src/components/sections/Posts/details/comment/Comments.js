@@ -5,6 +5,8 @@ import { useDispatch } from 'react-redux'
 import { Formik } from 'formik'
 import { commentSchema } from '../../../../../utils/validationSchemas'
 
+import { NO_COMMENTS } from '../../../../../constants'
+
 import { commentAPost } from '../../../../../actions/posts'
 
 import { Buttons } from '../../../../common/Button'
@@ -24,9 +26,10 @@ export const Comments = ({ post }) => {
 
   return (
     <div>
-      <Containers display='flex'>
+      <Containers display='flex' justify='space-between'>
         <div>
-          { comments.length ? renderComments(comments) : '' }
+          <Text align='left' gutterBottom variant='h6'>Comentarios</Text>
+          { comments.length ? renderComments(comments) : NO_COMMENTS }
         </div>
         <Formik initialValues={initialValues} validationSchema={commentSchema} onSubmit={(values, { resetForm }) => handleSubmit(values, resetForm)}>
           {({ handleSubmit }) => (
@@ -44,14 +47,13 @@ export const Comments = ({ post }) => {
 
 const renderComments = comments => {
   return (
-    <>
-      <Text align='left' gutterBottom variant='h6'>Comments</Text>
+    <StyledCommentDiv>
       {
         comments.map(comment => (
           <Text align='left' key={comment} variant='subtitle1'>{comment}</Text>
         ))
       }
-    </>
+    </StyledCommentDiv>
   )
 }
 
@@ -60,6 +62,14 @@ const StyledContainer = styled(Containers)`
     margin: 0;
     margin-left: 3rem;
     padding: 0;
+    width: 50%;
+  }
+`
+
+const StyledCommentDiv = styled(Containers)`
+  &&& {
+    padding: 0;
+    width: 100%;
   }
 `
 
