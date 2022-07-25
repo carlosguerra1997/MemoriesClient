@@ -1,4 +1,4 @@
-import { CHECK_IF_SIGNED_IN, LOGOUT, SIGN_IN, SIGN_UP } from '../constants/actionTypes'
+import { CHECK_IF_SIGNED_IN, HIDE_ERROR, LOGOUT, SIGN_IN, SIGN_UP, SHOW_ERROR } from '../constants/actionTypes'
 
 import { signInUser, signUpUser } from '../api/Auth'
 
@@ -6,8 +6,9 @@ export const signIn = (authInfo) => async dispatch => {
   try {
     const { data } = await signInUser(authInfo)
     dispatch({ type: SIGN_IN, payload: data })
+    dispatch({ type: HIDE_ERROR })
   } catch (error) {
-    throw new Error(error)
+    dispatch({ type: SHOW_ERROR, payload: error.response.data })
   }
 }
 
