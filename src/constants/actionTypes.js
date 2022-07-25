@@ -15,3 +15,6 @@ export const LOGOUT = '[POST] Logout'
 
 export const START_LOADING = 'START_LOADING'
 export const FINISH_LOADING = 'FINISH_LOADING'
+
+export const SHOW_ERROR = 'SHOW_ERROR'
+export const HIDE_ERROR = 'HIDE_ERROR'
