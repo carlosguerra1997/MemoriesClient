@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 
 import { Formik } from 'formik'
@@ -9,12 +9,14 @@ import { signIn } from '../../../actions/auth'
 
 import { Auth } from './Auth'
 import { Buttons } from '../../common/Button'
+import { Error } from '../../common/Error'
 import { Text } from '../../common/Text'
 import { TextFields } from '../../common/TextField'
 
 export const SignIn = () => {
   const dispatch = useDispatch()
   const history = useHistory()
+  const { error, hasError } = useSelector(state => state.loading)
 
   const initialValues = {
     email: '',
@@ -28,7 +30,7 @@ export const SignIn = () => {
 
   const handleSubmit = values => {
     dispatch(signIn(values))
-    history.push('/')
+    if (!hasError) history.push('/')
   }
 
   return (
@@ -44,6 +46,7 @@ export const SignIn = () => {
           </>
         )}
       </Formik>
+      { hasError && <Error>{error}</Error> }
     </Auth>
   )
 }
